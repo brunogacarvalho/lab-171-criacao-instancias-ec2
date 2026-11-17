@@ -89,27 +89,27 @@
   <script>
     const cards = [
       {
-        q: "O que é e para que serve um Host Bastion?",
-        a: "É um servidor usado como porta de entrada segura para acessar e gerenciar outros servidores na rede da AWS."
+        q: "O que é um Host Bastion neste laboratório?",
+        a: "É uma instância EC2 usada como ponto de partida para executar comandos da AWS CLI e iniciar outra instância."
       },
       {
-        q: "Por que colocamos a IAM Role 'Bastion-Role' na instância EC2?",
-        a: "Para dar permissão ao servidor rodar comandos da AWS CLI sem precisar salvar senhas ou chaves de acesso dentro dele."
+        q: "Para que serve o perfil de instância IAM 'Bastion-Role'?",
+        a: "Para dar permissão às aplicações da instância fazerem solicitações ao serviço Amazon EC2 usando a AWS CLI."
       },
       {
-        q: "O que faz o EC2 Instance Connect?",
-        a: "Permite abrir o terminal de uma instância Linux direto pelo navegador, sem precisar baixar arquivos de chave no computador."
+        q: "O que é o EC2 Instance Connect?",
+        a: "É uma ferramenta usada para fazer login com segurança em uma instância Linux sem precisar criar um par de chaves."
       },
       {
-        q: "Como pegamos o código da imagem (AMI) mais atual no laboratório?",
-        a: "Consultando o AWS Systems Manager Parameter Store pelo terminal usando a AWS CLI."
+        q: "Como o script obteve o ID mais recente da AMI do Amazon Linux 2?",
+        a: "Consultando o AWS Systems Manager Parameter Store com o comando aws ssm get-parameters."
       },
       {
-        q: "Para que serve o User Data ao criar uma instância EC2?",
-        a: "Para rodar um script automático assim que o servidor liga pela primeira vez, como instalar um site."
+        q: "Para que serve o arquivo UserData.txt usado na criação do servidor web?",
+        a: "É um script executado automaticamente quando a instância inicia para instalar e configurar o servidor web."
       },
       {
-        q: "Qual comando da AWS CLI cria uma nova instância EC2?",
+        q: "Qual comando da AWS CLI inicia uma nova instância EC2?",
         a: "O comando aws ec2 run-instances."
       },
       {
@@ -117,8 +117,8 @@
         a: "O comando aws ec2 describe-instances."
       },
       {
-        q: "O que conferir se um site hospedado no EC2 não abre no navegador?",
-        a: "Se o Security Group libera a entrada na porta 80 (HTTP) e se o serviço web (Apache) está ligado no servidor."
+        q: "Qual é o objetivo de um Grupo de Segurança (Security Group)?",
+        a: "Atuar como um firewall virtual que controla o tráfego de entrada e saída de uma ou mais instâncias."
       }
     ];
 

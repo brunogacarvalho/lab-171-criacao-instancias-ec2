@@ -1,29 +1,31 @@
 # Lab 171 - Criação de Instâncias do Amazon EC2
 
 ## Visão geral
-Neste laboratório, pratiquei a criação e o gerenciamento de instâncias do Amazon EC2 utilizando tanto o Console de Gerenciamento da AWS quanto a AWS CLI, além de configurar um host bastion e solucionar problemas de serviço.
+
+Neste laboratório, pratiquei o lançamento e o gerenciamento de instâncias do Amazon EC2 utilizando o Console da AWS e a AWS CLI. Configurei um host bastion com IAM Role, publiquei um servidor web automatizado com User Data e realizei diagnósticos de rede e serviço.
 
 ## Atividades realizadas
-1. **Criação do Host Bastion no Console da AWS:** Instância `t3.micro` com Amazon Linux 2 na `Lab VPC`, Security Group SSH e perfil IAM `Bastion-Role`.
-2. **Conexão segura via EC2 Instance Connect:** Acesso direto ao terminal Linux pelo navegador.
-3. **Lançamento de servidor web usando AWS CLI:** Consulta de AMI no Parameter Store e execução de `aws ec2 run-instances` com script `UserData.txt`.
-4. **Validação do servidor web:** Verificação do painel web através do DNS IPv4 público.
-5. **Resolução de problemas:** Correção de acessos e do serviço Apache na instância `Misconfigured Web Server`.
 
-*(As imagens ilustrativas de cada etapa podem ser incluídas no repositório seguindo o padrão de prints do Lab 170).*
+1. **Criação do Host Bastion**: Instância `t3.micro` com Amazon Linux 2, Security Group para SSH e IAM Role `Bastion-Role`.
+2. **Conexão e AWS CLI**: Uso do EC2 Instance Connect para consultar região, AMI no Systems Manager Parameter Store e instâncias ativas.
+3. **Servidor Web via AWS CLI**: Lançamento via `aws ec2 run-instances` com script `UserData.txt`.
+4. **Validação**: Confirmação da aplicação web *Widget Manufacturing Dashboard* no navegador através do DNS IPv4 público.
+5. **Resolução de Problemas**: Correção na instância `Misconfigured Web Server` para restaurar o acesso e a página padrão do Apache.
 
 ## O que aprendi
-* Criar e configurar instâncias EC2 pelo Console da AWS.
-* Associar IAM Role para comandos CLI sem chaves fixas.
-* Conectar-se via EC2 Instance Connect.
-* Consultar parâmetros de AMI no Systems Manager Parameter Store.
-* Automatizar servidores web com AWS CLI e User Data.
-* Diagnosticar e resolver falhas de conectividade e serviços web.
+
+- Criação e gerenciamento de instâncias EC2 (Console e AWS CLI).
+- Associação de IAM Role e conexão via EC2 Instance Connect.
+- Consulta de AMIs no Systems Manager Parameter Store.
+- Automação com scripts de User Data e solução de problemas de rede.
 
 ## Página do projeto
-**[Acessar GitHub Pages](https://github.io)**
+
+**[Acessar GitHub Pages](https://github.io)** (Resumo e flashcards interativos).
 
 ## Créditos
-Laboratório realizado na **Escola da Nuvem** (Formação em Computação em Nuvem).
-* Professor: [Raphael Ohlsen](https://linkedin.com)
-* Instituição: [Escola da Nuvem](https://escoladanuvem.org)
+
+Laboratório realizado durante a formação em Computação em Nuvem (AWS re/Start) da **Escola da Nuvem**.
+
+- Professor: [Raphael Ohlsen](https://br.linkedin.com/in/raphael-ohlsen)
+- Instituição: [Escola da Nuvem](https://escoladanuvem.org) | [LinkedIn da Escola da Nuvem](https://www.linkedin.com/school/escola-da-nuvem/)

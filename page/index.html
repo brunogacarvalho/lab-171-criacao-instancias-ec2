@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 171 | Instâncias do Amazon EC2</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">Lab 171 | Instâncias do Amazon EC2</div>
+  </div>
+
+  <header>
+    <div class="container">
+      <span class="badge">AWS CLOUD LAB</span>
+      <h1>Criação de Instâncias do Amazon EC2</h1>
+      <div class="subtitle">Lab 171 - Provisionamento com Console da AWS, Instance Connect e AWS CLI</div>
+      <p>Neste laboratório, pratiquei o lançamento de um host bastion pelo Console da AWS, a conexão segura via EC2 Instance Connect, a automação de um servidor web utilizando AWS CLI e User Data, além da resolução de problemas de acesso e serviço em instâncias EC2.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Atividades realizadas</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="card-number">01</span>
+          <h3>Host Bastion</h3>
+          <p>Criação de instância t3.micro na Lab VPC com Security Group para SSH e associação do perfil IAM Bastion-Role.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">02</span>
+          <h3>Instance Connect</h3>
+          <p>Conexão segura ao terminal Linux do host bastion pelo navegador para administrar recursos da conta AWS.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">03</span>
+          <h3>AWS CLI e User Data</h3>
+          <p>Consulta de AMI no Parameter Store e lançamento automatizado de servidor web via linha de comando com script de inicialização.</p>
+        </div>
+        <div class="card">
+          <span class="card-number">04</span>
+          <h3>Troubleshooting</h3>
+          <p>Diagnóstico e correção de regras de acesso e do serviço Apache na instância Misconfigured Web Server.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>O que aprendi</h2>
+      <ul class="learnings-list">
+        <li>Criar e configurar instâncias Amazon EC2 pelo Console de Gerenciamento da AWS.</li>
+        <li>Associar uma IAM Role (Instance Profile) para autorizar comandos da AWS CLI sem armazenar chaves de acesso no servidor.</li>
+        <li>Conectar-se a instâncias Linux com segurança utilizando o EC2 Instance Connect.</li>
+        <li>Consultar parâmetros de AMI atualizados no Systems Manager Parameter Store via CLI.</li>
+        <li>Automatizar a criação e configuração de servidores web usando AWS CLI e scripts de User Data.</li>
+        <li>Diagnosticar e corrigir falhas de conectividade e serviços web em instâncias EC2.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Teste seus conhecimentos</h2>
+      <p class="section-desc">Revise os principais conceitos deste laboratório com 8 flashcards interativos.</p>
+      <div class="flashcard-wrapper">
+        <div class="flashcard">
+          <div class="flashcard-counter" id="counter">FLASHCARD 1 / 8</div>
+          <div class="flashcard-question" id="question"></div>
+          <button id="toggle-btn" onclick="toggleAnswer()">Mostrar resposta</button>
+          <div class="flashcard-answer" id="answer"></div>
+        </div>
+        <div class="flashcard-controls">
+          <button class="secondary" id="prev-btn" onclick="prevCard()">Anterior</button>
+          <button class="secondary" id="next-btn" onclick="nextCard()">Próximo</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Lab 171 - Criação de Instâncias do Amazon EC2</p>
+      <p>Formação em Computação em Nuvem | Escola da Nuvem</p>
+      <p><a href="https://github.com" target="_blank" rel="noopener">Ver repositório no GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const cards = [
+      {
+        q: "Qual a função de um Host Bastion na arquitetura da nuvem?",
+        a: "Atuar como um ponto de entrada controlado e seguro para administrar outros recursos e executar comandos na infraestrutura da VPC."
+      },
+      {
+        q: "Por que associamos o perfil IAM 'Bastion-Role' à instância EC2?",
+        a: "Para conceder permissões temporárias e seguras à instância, permitindo executar chamadas da AWS CLI sem salvar credenciais fixas no servidor."
+      },
+      {
+        q: "O que é o EC2 Instance Connect?",
+        a: "Um recurso que permite conectar-se a instâncias Linux via SSH diretamente pelo navegador ou CLI sem gerenciar chaves privadas manualmente."
+      },
+      {
+        q: "Como o script do laboratório obteve o ID mais recente da AMI do Amazon Linux 2?",
+        a: "Consultando o AWS Systems Manager Parameter Store através do comando aws ssm get-parameters."
+      },
+      {
+        q: "Para que serve o parâmetro --user-data ao iniciar uma instância EC2?",
+        a: "Permite enviar um script que é executado automaticamente na primeira inicialização da máquina, como a instalação de um servidor web."
+      },
+      {
+        q: "Qual comando da AWS CLI é usado para criar uma nova instância EC2?",
+        a: "O comando aws ec2 run-instances, informando parâmetros como AMI, tipo de instância, sub-rede e grupo de segurança."
+      },
+      {
+        q: "Como consultar o status e o DNS público de uma instância pelo terminal?",
+        a: "Usando o comando aws ec2 describe-instances combinado com filtros ou o parâmetro --query."
+      },
+      {
+        q: "Quais dois pontos principais devem ser checados quando uma página web no EC2 não abre no navegador?",
+        a: "As regras de entrada do Security Group (porta 80/HTTP liberada) e se o serviço do servidor web (Apache/httpd) está ativo na instância."
+      }
+    ];
+
+    let currentIndex = 0;
+    let answerVisible = false;
+
+    const counterEl = document.getElementById("counter");
+    const questionEl = document.getElementById("question");
+    const answerEl = document.getElementById("answer");
+    const toggleBtn = document.getElementById("toggle-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    function renderCard() {
+      counterEl.textContent = `FLASHCARD ${currentIndex + 1} / ${cards.length}`;
+      questionEl.textContent = cards[currentIndex].q;
+      answerEl.textContent = cards[currentIndex].a;
+      answerVisible = false;
+      answerEl.classList.remove("visible");
+      toggleBtn.textContent = "Mostrar resposta";
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === cards.length - 1;
+    }
+
+    function toggleAnswer() {
+      answerVisible = !answerVisible;
+      if (answerVisible) {
+        answerEl.classList.add("visible");
+        toggleBtn.textContent = "Ocultar resposta";
+      } else {
+        answerEl.classList.remove("visible");
+        toggleBtn.textContent = "Mostrar resposta";
+      }
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCard();
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        renderCard();
+      }
+    }
+
+    renderCard();
+  </script>
+</body>
+</html>

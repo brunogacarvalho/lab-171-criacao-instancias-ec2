@@ -55,5 +55,7 @@ A página apresenta um resumo do laboratório e flashcards interativos para revi
 
 Laboratório realizado durante a formação em Computação em Nuvem (AWS re/Start) da **Escola da Nuvem**.
 
-- Professor: [Raphael Ohlsen](https://linkedin.com)
-- Instituição: [Escola da Nuvem](https://escoladanuvem.org) | [LinkedIn da Escola da Nuvem](https://linkedin.com)
+- Professor: [Raphael Ohlsen](https://br.linkedin.com/in/raphael-ohlsen)
+- Instituição: [Escola da Nuvem](https://escoladanuvem.org/) | [LinkedIn da Escola da Nuvem](https://www.linkedin.com/school/escola-da-nuvem/)
+
+Laboratório realizado como parte da formação em Computação em Nuvem AWS.
